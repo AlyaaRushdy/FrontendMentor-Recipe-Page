@@ -33,15 +33,165 @@ img {
   --Light-Grey: hsl(30, 18%, 87%);
   --Wenge-Brown: hsl(30, 10%, 34%);
   --Dark-Charcoal: hsl(24, 5%, 18%);
+  --footer-link: hsl(228, 45%, 44%);
 
   /* Typography */
   --font-size: 16px;
+  --font-weight-normal: 400;
+  --font-weight-semiBold: 600;
+  --font-weight-bold: 700;
 }
 
 /* || Helper Classes */
-.bold {
-  font-weight: 600;
+.semibold {
+  font-weight: var(--font-weight-semiBold);
 }
 .color-nutmeg {
   color: var(--Nutmeg);
+}
+.list {
+  list-style: none;
+}
+.list__li {
+  position: relative;
+  padding-left: 2.5rem;
+}
+.list__li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0.5rem;
+  scale: 1.5;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+
+  color: var(--Wenge-Brown);
+  background-color: var(--Eggshell);
+
+  font: var(--font-weight-normal) var(--font-size) / 1.75 "Outfit", sans-serif;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  width: clamp(20rem, 100vw, 45rem);
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: var(--White);
+  border-radius: 1rem;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-self: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.main__img {
+  border-radius: 0.5rem;
+}
+
+.main__h1 {
+  font-family: "YoungSerif", serif;
+  color: var(--Dark-Charcoal);
+}
+
+/* Preperation section */
+.section__prep {
+  background-color: var(--Rose-White);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+.prep__h3 {
+  color: var(--Dark-Raspberry);
+}
+.prep__span {
+  font-weight: var(--font-weight-bold);
+}
+.prep__ul__li::before {
+  color: var(--Dark-Raspberry);
+}
+
+/* ingredients and instructions sections */
+.section__h2 {
+  font-family: "YoungSerif", serif;
+  color: var(--Nutmeg);
+}
+.ingredients__ul__li::before {
+  color: var(--Nutmeg);
+}
+.inst__ol {
+  counter-reset: incCounter;
+}
+.inst__ol__li {
+  counter-increment: incCounter;
+}
+.inst__ol__li::before {
+  content: counter(incCounter) ".";
+  color: var(--Nutmeg);
+  font-weight: var(--font-weight-semiBold);
+  scale: 1;
+}
+
+.hr {
+  height: 1px;
+  border: none;
+  background-color: var(--Light-Grey);
+}
+
+/* || Nutrition Section*/
+.section__nutrition__p {
+  margin: 1rem 0;
+}
+.section__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.section__table__tr td {
+  width: 50%;
+  height: 2.5rem;
+  text-align: left;
+  text-indent: 1.5rem;
+}
+.section__table__tr:not(:last-child) {
+  border-bottom: 1px solid var(--Light-Grey);
+}
+
+/* Footer Styling */
+.footer {
+  position: absolute;
+  bottom: 5px;
+  font-size: 11px;
+}
+.footer a {
+  color: var(--footer-link);
+}
+
+@media screen and (max-width: 425px) {
+  body {
+    background-color: var(--White);
+  }
+  .main {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .main__img {
+    border-radius: 0;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
+@media screen and (min-width: 425px) and (max-width: 767px) {
+  .main {
+    width: min(88vw, 45rem);
+  }
 }
